@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.backendPauper.converter.JugadorConverter;
-import com.backendPauper.converter.TorneoConverter;
 import com.backendPauper.entity.JugadorEntity;
 import com.backendPauper.entity.TorneoEntity;
 import com.backendPauper.repository.JugadorRepository;
@@ -24,7 +23,6 @@ public class JugadorServiceImpl implements JugadorService {
 
 	public JugadorServiceImpl(JugadorRepository jugadorRepository, JugadorConverter jugadorConverter,
 			TorneoRepository torneoRepository) {
-		super();
 		this.jugadorRepository = jugadorRepository;
 		this.jugadorConverter = jugadorConverter;
 		this.torneoRepository = torneoRepository;

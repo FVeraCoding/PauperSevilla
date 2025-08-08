@@ -11,10 +11,10 @@ import com.backendPauper.entity.JugadorEntity;
 import com.backendPauper.entity.TorneoEntity;
 
 @Repository
-public interface JugadorRepository extends JpaRepository<JugadorEntity, Long>{
+public interface JugadorRepository extends JpaRepository<JugadorEntity, Long> {
 
-		JugadorEntity findByNombre(String nombre);
-		
-		@Query("SELECT t FROM TorneoEntity t JOIN t.jugadores j WHERE j.id = :id")
-		List<TorneoEntity> findTorneosByJugadorId(@Param("id") Long id);
+	JugadorEntity findByNombre(String nombre);
+
+	@Query("SELECT t FROM TorneoEntity t JOIN t.jugadores j WHERE j.id = :id")
+	List<TorneoEntity> findTorneosByJugadorId(@Param("id") Long id);
 }

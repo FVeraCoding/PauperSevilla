@@ -7,7 +7,7 @@ import com.backendPauper.vo.TorneoVO;
 public interface TorneoService {
 
 	List<TorneoVO> findAll();
-	TorneoVO findById();
+	TorneoVO findById(Long id);
 	List<TorneoVO> findByTiendaOrganizadora(String tiendaOrganizadora);
 	List<TorneoVO> findByMesAndAnio(int mes, int anio);
 	

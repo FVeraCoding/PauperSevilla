@@ -28,15 +28,31 @@ public class TorneoRepositoryTest {
 		TorneoEntity torneo = new TorneoEntity(LocalDate.of(2025, 2, 15), 5, 16, "Empire Games");
 		torneoRepository.save(torneo);
 		
+		TorneoEntity torneo2 = new TorneoEntity(LocalDate.of(2025, 3, 7), 4, 13, "Empire Games");
+		torneoRepository.save(torneo2);
+		
 		List<TorneoEntity> buscados = torneoRepository.findByTiendaOrganizadora("Empire Games");
 		
+		// Not null
 		assertNotNull(buscados);
+		
+		// Tamanio
+		assertEquals(2, buscados.size());
+		
+		// Torneo 1
 		assertEquals(buscados.get(0).getId(), torneo.getId());
 		assertEquals(buscados.get(0).getNumeroRondas(), torneo.getNumeroRondas());
 		assertEquals(buscados.get(0).getNumeroParticipantes(), torneo.getNumeroParticipantes());
 		assertEquals(buscados.get(0).getTiendaOrganizadora(), torneo.getTiendaOrganizadora());
 		
+		// Torneo 2
+		assertEquals(buscados.get(1).getId(), torneo2.getId());
+		assertEquals(buscados.get(1).getNumeroRondas(), torneo2.getNumeroRondas());
+		assertEquals(buscados.get(1).getNumeroParticipantes(), torneo2.getNumeroParticipantes());
+		assertEquals(buscados.get(1).getTiendaOrganizadora(), torneo2.getTiendaOrganizadora());
+		
 	}
+	
 	
 	@Test
 	void findByMesAndAnio() {
@@ -48,14 +64,19 @@ public class TorneoRepositoryTest {
 		
 		List<TorneoEntity> buscados = torneoRepository.findByMesAndAnio(2, 2025);
 		
+		// Not null
 		assertNotNull(buscados);
 		
+		// Tamanio
+		assertEquals(2, buscados.size());
+		
+		// Torneo 1
 		assertEquals(buscados.get(0).getId(), torneo.getId());
 		assertEquals(buscados.get(0).getNumeroRondas(), torneo.getNumeroRondas());
 		assertEquals(buscados.get(0).getNumeroParticipantes(), torneo.getNumeroParticipantes());
 		assertEquals(buscados.get(0).getTiendaOrganizadora(), torneo.getTiendaOrganizadora());
 
-		
+		// Torneo 2
 		assertEquals(buscados.get(1).getId(), torneo2.getId());
 		assertEquals(buscados.get(1).getNumeroRondas(), torneo2.getNumeroRondas());
 		assertEquals(buscados.get(1).getNumeroParticipantes(), torneo2.getNumeroParticipantes());

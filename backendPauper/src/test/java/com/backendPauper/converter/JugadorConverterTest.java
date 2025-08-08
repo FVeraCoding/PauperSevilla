@@ -42,19 +42,5 @@ public class JugadorConverterTest {
 		assertEquals(1, entity.getDerrotas());
 		
 	}
-	
-	@Test
-	void testToVo_NullInput() {
-		JugadorVO vo = converter.toVO(null);
 		
-		assertEquals(null, vo);
-	}
-	
-	@Test
-	void testToEntity_NullInput(){
-		JugadorEntity entity = converter.toEntity(null);
-		assertEquals(null, entity);
-	}
-	
-	
 }

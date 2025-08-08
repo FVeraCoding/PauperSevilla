@@ -1,5 +1,6 @@
 package com.backendPauper.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,9 +15,11 @@ import com.backendPauper.entity.TorneoEntity;
 public interface TorneoRepository extends JpaRepository<TorneoEntity, Long> {
 
 	List<TorneoEntity> findByTiendaOrganizadora(String tiendaOrganizadora);
+	
+	List<TorneoEntity> findByFecha(LocalDate fecha);
 
 	@Query("SELECT t FROM TorneoEntity t WHERE MONTH(t.fecha) = :mes AND YEAR(t.fecha) = :anio")
-	List<TorneoEntity> findByMesAndAnio(int mes, int anio);
+	List<TorneoEntity> findByMesAndAnio(@Param("mes") int mes, @Param("anio") int anio);
 	
 	@Query("Select j FROM JugadorEntity j JOIN j.torneos t WHERE t.id = :torneoId")
 	List<JugadorEntity> findJugadoresByTorneoId(@Param("torneoId") Long torneoId);
