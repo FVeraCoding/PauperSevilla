@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class TorneoEntity {
@@ -32,6 +33,9 @@ public class TorneoEntity {
 	
 	@ManyToMany(mappedBy="torneos")
 	private List<JugadorEntity> jugadores = new ArrayList<>();
+	
+	@OneToMany(mappedBy="torneo")
+	private List<ParticipacionEntity> participaciones = new ArrayList<>();
 
 	public TorneoEntity() {
 		

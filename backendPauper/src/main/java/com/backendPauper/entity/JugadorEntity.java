@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -40,12 +41,13 @@ public class JugadorEntity {
 			inverseJoinColumns = @JoinColumn(name="torneo_id")
 	)
 	private List<TorneoEntity> torneos = new ArrayList<>();
+	
+	@OneToMany(mappedBy="jugador")
+	private List<ParticipacionEntity> participaciones = new ArrayList<>();
 
 	public JugadorEntity() {
 		
 	}
-	
-	
 	
 	public JugadorEntity(String nombre, int victorias, int empates, int derrotas) {
 		
@@ -123,6 +125,14 @@ public class JugadorEntity {
 
 	public void setTorneos(List<TorneoEntity> torneo) {
 		this.torneos = torneo;
+	}
+
+	public List<ParticipacionEntity> getParticipaciones() {
+		return participaciones;
+	}
+
+	public void setParticipaciones(List<ParticipacionEntity> participaciones) {
+		this.participaciones = participaciones;
 	}
 	
 	
