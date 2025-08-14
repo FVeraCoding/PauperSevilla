@@ -1,0 +1,59 @@
+<div class="estadisticas-generales">
+    <div class="estadisticas-generales-card">
+        <h3>Jugadores de la comunidad</h3>
+        <p>{{allJugadores.length}}</p>
+    </div>
+    <div class="estadisticas-generales-card">
+        <h3>Torneos realizados</h3>
+        <p>Numero</p>
+    </div>
+</div>
+
+<div class="selector-estadisticas">
+    <button [class.activo]="seleccionado === true" autofocus (click)="seleccionar()">Clasificación de jugadores</button>
+    <button [class.activo]="seleccionado === false" (click)="deseleccionar()">Torneos</button>
+</div>
+
+<div class="buscador">
+    <input type="search" placeholder="Buscar Jugador" [(ngModel)]="busqueda" id="buscador-jugadores" *ngIf="seleccionado">
+</div>
+
+<div class="tabla-dinamica" *ngIf="seleccionado==true">
+    <div class="fila titulos-tabla">
+        <p><b>Nombre</b></p>
+        <p><b>Victorias</b></p>
+        <p><b>Empates</b></p>
+        <p><b>Derrotas</b></p>
+        <p><b>Partidas</b></p>
+        <p><b>Puntos</b></p>
+        <p><b>Win Rate</b></p>
+        <p><b>Lose Rate</b></p>
+        <p><b>Draw Rate</b></p>
+    </div>
+    <div class="fila jugador" *ngFor="let jugador of jugadoresFiltrados">
+        <p>{{jugador.nombre}}</p>
+        <p>{{jugador.victorias}}</p>
+        <p>{{jugador.empates}}</p>
+        <p>{{jugador.derrotas}}</p>
+        <p>{{jugador.totalPartidas}}</p>
+        <p>{{jugador.totalPuntos}}</p>
+        <p>{{jugador.winRate}}%</p>
+        <p>{{jugador.loseRate}}%</p>
+        <p>{{jugador.drawRate}}%</p>
+    </div>
+</div>
+
+<div class="tabla-dinamica" *ngIf="seleccionado==false">
+    <div class="fila titulos-tabla">
+        <p><b>Nombre</b></p>
+        <p><b>Victorias</b></p>
+        <p><b>Empates</b></p>
+        <p><b>Derrotas</b></p>
+        <p><b>Partidas</b></p>
+        <p><b>Puntos</b></p>
+        <p><b>Win Rate</b></p>
+        <p><b>Lose Rate</b></p>
+        <p><b>Draw Rate</b></p>
+    </div>
+
+</div>

@@ -8,7 +8,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/app/pages/jugador/jugador.component.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]

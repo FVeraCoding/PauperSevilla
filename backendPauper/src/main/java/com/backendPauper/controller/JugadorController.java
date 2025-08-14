@@ -49,13 +49,7 @@ public class JugadorController {
 	public ResponseEntity<JugadorVO> createJugador(@RequestBody JugadorVO jugador){
 		return ResponseEntity.status(HttpStatus.CREATED).body(jugadorService.createJugador(jugador));
 	}
-	
-	@PostMapping("/jugador/{idJugador}/torneo/{idTorneo}")
-	public ResponseEntity<?> inscribirJugadorTorneo(@PathVariable Long idJugador, @PathVariable Long idTorneo){
-		jugadorService.inscribirJugadorEnTorneo(idJugador, idTorneo);
-		return ResponseEntity.ok().build();
-	}
-	
+		
 	@PutMapping
 	public ResponseEntity<JugadorVO> updateJugador(@RequestBody JugadorVO jugador){
 		return ResponseEntity.ok(jugadorService.updateJugador(jugador));

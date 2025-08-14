@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Jugador } from '../models/jugador.model';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class JugadorService {
+  private apiUrl = "http://localhost:8080/jugador";
+  
+  constructor(private http:HttpClient){}
+
+  getAllJugadores(): Observable<Jugador[]>{
+    return this.http.get<Jugador[]>(`${this.apiUrl}`);
+  }
+
+  getJugadorById(id: number): Observable<Jugador>{
+    return this.http.get<Jugador>(`${this.apiUrl}/${id}`);
+  }
+
+  getJugadorByNombre(nombre: String): Observable<Jugador>{
+    return this.http.get<Jugador>(`${this.apiUrl}/nombre/${nombre}`);
+  }
+
+  createJugador(jugador: Jugador): Observable<Jugador>{
+    return this.http.post<Jugador>(`${this.apiUrl}`, jugador);
+  }
+
+  updateJugador(jugador:Jugador): Observable<Jugador>{
+    return this.http.put<Jugador>(`${this.apiUrl}`, jugador);
+  }
+
+  deleteJugadorById(id: number){
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+}
