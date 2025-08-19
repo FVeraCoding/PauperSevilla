@@ -32,6 +32,10 @@ public class JugadorVO {
 			this.drawRate = 0;
 		}
 	}
+	
+	public JugadorVO(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public JugadorVO() {
 

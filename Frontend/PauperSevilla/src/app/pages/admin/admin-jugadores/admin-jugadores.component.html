@@ -1,0 +1,30 @@
+<div class="contenedor-principal">
+    <div class="crear-jugador contenedor" (click)="abrirModalCrearJugador()">
+        <h2>Crear Jugador</h2>
+    </div>
+    <div class="actualizar-jugador contenedor">
+        <h2>Actualizar Jugador</h2>
+    </div>
+    <div class="eliminar-jugador contenedor">
+        <h2>Eliminar Jugador</h2>
+    </div>
+</div>
+
+<div class="modal-backdrop" *ngIf="modalCrearJugadorVisible">
+    <div class="modal-crear-jugador">
+        <form #formJugador="ngForm">
+            <div class="campo">
+                <label for="nombre">
+                    <p>Introduce el nombre del jugador:</p>
+                </label>
+                <input type="text" id="nombre" name="nombre" required [(ngModel)]="nombre" minlength="6">
+            </div>
+
+            <div class="botones">
+                <button [disabled]="formJugador.invalid" (click)="crearJugador(nombre)">Aceptar</button>
+                <button (click)="cerrarModalCrearJugador()">Cancelar</button>
+            </div>
+
+        </form>
+    </div>
+</div>

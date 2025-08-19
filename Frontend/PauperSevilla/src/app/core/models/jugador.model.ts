@@ -1,5 +1,5 @@
 export interface Jugador{
-    id:number,
+    id?: number|null,
     nombre:string,
     victorias:number,
     derrotas:number,
