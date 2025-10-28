@@ -12,8 +12,9 @@ public class JugadorVO {
 	private double winRate;
 	private double loseRate;
 	private double drawRate;
+	private Long usuarioId;
 
-	public JugadorVO(Long id, String nombre, int victorias, int empates, int derrotas) {
+	public JugadorVO(Long id, String nombre, int victorias, int empates, int derrotas, Long usuarioId) {
 		this.id = id;
 		this.nombre = nombre;
 		this.victorias = victorias;
@@ -21,6 +22,7 @@ public class JugadorVO {
 		this.derrotas = derrotas;
 		this.totalPartidas = victorias + empates + derrotas;
 		this.totalPuntos = (victorias * 3) + empates;
+		this.usuarioId = usuarioId;
 
 		if (totalPartidas > 0) {
 			this.winRate = Math.round(((double) victorias / totalPartidas * 100) * 100) / 100;
@@ -31,6 +33,8 @@ public class JugadorVO {
 			this.loseRate = 0;
 			this.drawRate = 0;
 		}
+		
+		
 	}
 	
 	public JugadorVO(String nombre) {
@@ -120,5 +124,15 @@ public class JugadorVO {
 	public void setDrawRate(double drawRate) {
 		this.drawRate = drawRate;
 	}
+
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+	
+	
 
 }
